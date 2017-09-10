@@ -1,4 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1> hello {{user}} </h1>
+    <div class="container">
+        {%- for column in photoset|batch(3) %}
+            <div class="row">
+                {%- for photo in column %}
+                    <div class="col-md-4">
+                        <img src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" class="img-fluid" alt="Responsive image">
+                    </div>
+                {%- endfor %}
+            </div>
+        {%- endfor %}
+    </div>
 {% endblock %}
